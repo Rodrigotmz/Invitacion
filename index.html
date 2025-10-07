@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación XV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .contenido,
+        #contenido,
+        .nombre,
+        .xv {
+            position: relative;
+            z-index: 2;
+        }
+        
+         :root {
+            --rosa: #f8a5c2;
+            --dorado: #d4af37;
+            --blanco: #ffffff;
+            --bg: #fff0f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        html,
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('https://newskill.com.mx/imagenes/fondo.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            flex-direction: column;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+        /* ✅ Fondo fijo simulado para iPhone sin usar background-attachment */
+        
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: inherit;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            will-change: transform;
+            transform: translateZ(0);
+        }
+        /* Portada */
+        
+        #portada {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--blanco);
+            z-index: 9999;
+            cursor: pointer;
+        }
+        
+        #portada img {
+            max-width: 320px;
+            border: 5px solid var(--dorado);
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            animation: flotar 2s ease-in-out infinite;
+        }
+        
+        @keyframes flotar {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+        /* Contenido */
+        
+        .contenido {
+            opacity: 0;
+            transition: opacity 1s ease;
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+        
+        .mostrar {
+            opacity: 1;
+        }
+        
+        .nombre {
+            font-family: "Great Vibes", cursive;
+            font-size: 3em;
+            color: #d4af37;
+            font-weight: normal;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            animation: movimiento 3s ease-in-out infinite;
+        }
+        
+        @keyframes movimiento {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .xv {
+            font-family: "Poppins", sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #f4a6c1;
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-shadow: 0 0 4px rgba(244, 166, 193, 0.6), 0 0 8px rgba(244, 166, 193, 0.4);
+            animation: movimientoXv 3s ease-in-out infinite;
+        }
+        
+        @keyframes movimientoXv {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--rosa);
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px var(--rosa);
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            color: var(--dorado);
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        
+        section {
+            margin: 50px 0;
+            padding: 30px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+        
+        section.mostrar {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reflexion {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            color: #8b7500;
+            text-align: center;
+            line-height: 1.8;
+            margin: 50px auto;
+            max-width: 450px;
+            padding: 30px 40px;
+            position: relative;
+        }
+        
+        .reflexion::before,
+        .reflexion::after {
+            content: "";
+            position: absolute;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--dorado), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .reflexion::before {
+            top: -15px;
+        }
+        
+        .reflexion::after {
+            bottom: -15px;
+        }
+        
+        .reflexion span.decor {
+            display: inline-block;
+            font-size: 1.8rem;
+            color: var(--dorado);
+            margin: 20px auto;
+        }
+        
+        .fecha {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 600px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .fecha .mes {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--dorado);
+            margin-bottom: 12px;
+            font-family: 'Great Vibes', cursive;
+        }
+        
+        .fecha .fechacompleta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .fecha .dia,
+        .fecha .anio {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6e5a20;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 8px 15px;
+        }
+        
+        .fecha .dia::before,
+        .fecha .dia::after,
+        .fecha .anio::before,
+        .fecha .anio::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to right, transparent, var(--dorado), transparent);
+            border-radius: 50px;
+        }
+        
+        .fecha .dia::before,
+        .fecha .anio::before {
+            top: -8px;
+        }
+        
+        .fecha .dia::after,
+        .fecha .anio::after {
+            bottom: -8px;
+        }
+        
+        .fecha .ndia {
+            font-size: 6rem;
+            font-weight: bold;
+            color: var(--rosa);
+            line-height: 1;
+        }
+        
+        .fecha .gran-dia {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--rosa);
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+        /* Calendario */
+        
+        .calendario {
+            background: #e8dfc9;
+            padding: 20px 30px;
+            border-radius: 25px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        /* Título calendario */
+        
+        .calendario h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: #f8a5c2;
+            margin-bottom: 15px;
+        }
+        /* Tabla del calendario */
+        
+        .calendario table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        
+        .calendario th {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #a88f77;
+            padding-bottom: 6px;
+        }
+        
+        .calendario td {
+            width: 14.28%;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: #555;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .calendario td span {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .calendario td span:hover {
+            transform: scale(1.1);
+            background: #ffe4f0;
+            color: #000;
+            cursor: pointer;
+        }
+        
+        .calendario .hoy span {
+            background: #f8a5c2;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 0 0 12px rgba(248, 165, 194, 0.5);
+            transform: scale(1.15);
+        }
+        
+        .calendario tbody tr {
+            margin-bottom: 4px;
+        }
+        
+        @media (max-width: 400px) {
+            .calendario h2 {
+                font-size: 1.5rem;
+            }
+            .calendario th {
+                font-size: 0.75rem;
+            }
+            .calendario td {
+                font-size: 0.8rem;
+            }
+            .calendario td span {
+                width: 24px;
+                height: 24px;
+                line-height: 24px;
+            }
+        }
+        /* conteo*/
+        
+         :root {
+            --rosa-pastel: #f8a5c2;
+            --blanco: #ffffff;
+        }
+        
+        .countdown {
+            width: 100%;
+            background: var(--rosa-pastel);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .countdown h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--blanco);
+            margin-bottom: 30px;
+        }
+        
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: nowrap;
+            flex-shrink: 0;
+            overflow-x: auto;
+            padding: 0 10px;
+        }
+        
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .time-box div {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--blanco);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 15px;
+            border-radius: 12px;
+            min-width: 60px;
+        }
+        
+        .time-box span {
+            margin-top: 6px;
+            font-size: 1rem;
+            /* más pequeño */
+            color: var(--blanco);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 400px) {
+            .countdown h2 {
+                font-size: 2.2rem;
+            }
+            .time-box div {
+                font-size: 1.6rem;
+                padding: 8px 12px;
+                min-width: 50px;
+            }
+            .time-box span {
+                font-size: 0.9rem;
+            }
+            .timer {
+                gap: 10px;
+            }
+        }
+        /* Ubicación */
+        
+        .ubicacion {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 30px 25px;
+            background: #f5f0e1;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .ubicacion h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: #f8a5c2;
+            margin-bottom: 30px;
+        }
+        
+        .ubicacion .evento {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 20px;
+            background: #fff0f5;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .ubicacion .evento h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #b89b2f;
+            margin-bottom: 10px;
+        }
+        
+        .ubicacion .evento p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #555;
+            margin: 5px 0;
+        }
+        
+        .ubicacion .btn-maps {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #f8a5c2;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .ubicacion .btn-maps:hover {
+            background: #e07aa0;
+            transform: scale(1.05);
+        }
+        /*padrinos y papas*/
+        
+         :root {
+            --rosa-pastel: #f8a5c2;
+            --beige: #f5f0e1;
+            --blanco: #ffffff;
+            --dorado-suave: #d4af37;
+        }
+        
+        .padrinos-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px 30px;
+            background: var(--beige);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            text-align: center;
+        }
+        
+        .padrinos-container h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--rosa-pastel);
+            margin-bottom: 30px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .padrinos-container .grupo {
+            margin-bottom: 30px;
+        }
+        
+        .padrinos-container .grupo h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--dorado-suave);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .padrinos-container .grupo h3::before,
+        .padrinos-container .grupo h3::after {
+            content: "✦";
+            margin: 0 8px;
+            color: var(--rosa-pastel);
+        }
+        
+        .padrinos-container .grupo p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #5a4a30;
+            margin: 6px 0;
+            font-weight: 600;
+        }
+        
+        .padrinos-container .grupo p:hover {
+            color: var(--rosa-pastel);
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+        /* Confirmación */
+        
+        .confirmacion-container {
+            width: 100%;
+            background: #f8a5c2;
+            /* Rosa pastel */
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .confirmacion-container h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
+        }
+        
+        .confirmacion-container p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: #ffe4f0;
+            /* Rosa más claro */
+            margin-bottom: 35px;
+        }
+        
+        .confirmacion-container a {
+            display: inline-block;
+            background: #ffffff;
+            color: #f8a5c2;
+            font-weight: bold;
+            padding: 15px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .confirmacion-container a:hover {
+            background: #f8a5c2;
+            color: #ffffff;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        /* Reproductor */
+        
+        .player {
+            width: 320px;
+            padding: 15px;
+            text-align: center;
+            margin: 30px auto;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            background: transparent;
+            border: none;
+            color: #ff69b4;
+            font-size: 2em;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.2s ease, color 0.2s;
+        }
+        
+        .btn:hover {
+            transform: scale(1.2);
+            color: var(--dorado);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(100, 98, 98, 0.3);
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 8px;
+        }
+        
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff69b4, var(--dorado));
+            border-radius: 4px;
+        }
+        
+        #timeDisplay {
+            font-size: 0.9rem;
+            color: #444;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Portada -->
+    <div id="portada">
+        <img src="https://newskill.com.mx/imagenes/sobre.png" alt="Abrir invitación">
+    </div>
+
+    <div class="contenido" id="contenido">
+        <h1 class="nombre">Jaretzy Joselin</h1>
+        <h1 class="xv">Mis XV Años</h1>
+
+        <!-- Reproductor -->
+        <div class="player">
+            <div class="controls">
+                <button class="btn" id="rewind">⏮</button>
+                <button class="btn" id="playPause">▶</button>
+                <button class="btn" id="forward">⏭</button>
+            </div>
+
+            <div class="progress-container" id="progressContainer">
+                <div class="progress" id="progress"></div>
+            </div>
+
+            <div id="timeDisplay">0:00 / 0:00</div>
+
+            <audio id="audio">
+                <source src="https://newskill.com.mx/imagenes/sonido.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Reflexión -->
+        <section class="reflexion">
+            <p>He comprendido que la verdadera felicidad está en compartir la vida con quienes amo. Por ello, anhelo que me acompañes en uno de los momentos más significativos de mi vida, un instante único que solo se vive una vez.</p>
+        </section>
+
+
+        <!-- Fecha -->
+        <section class="fecha">
+            <div class="mes">Noviembre</div>
+            <div class="fechacompleta">
+                <div class="dia">Sábado</div>
+                <div class="ndia">8</div>
+                <div class="anio">&nbsp;2025&nbsp;</div>
+            </div>
+
+            <div class="gran-dia">El Gran Día</div>
+        </section>
+        <!-- calendario -->
+        <section class="calendario">
+            <h2>Noviembre 2025</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dom</th>
+                        <th>Lun</th>
+                        <th>Mar</th>
+                        <th>Mié</th>
+                        <th>Jue</th>
+                        <th>Vie</th>
+                        <th>Sáb</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 1 de noviembre cae en sábado -->
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><span>1</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>2</span></td>
+                        <td><span>3</span></td>
+                        <td><span>4</span></td>
+                        <td><span>5</span></td>
+                        <td><span>6</span></td>
+                        <td><span>7</span></td>
+                        <td class="hoy"><span>8</span></td>
+                        <!-- Día marcado -->
+                    </tr>
+                    <tr>
+                        <td><span>9</span></td>
+                        <td><span>10</span></td>
+                        <td><span>11</span></td>
+                        <td><span>12</span></td>
+                        <td><span>13</span></td>
+                        <td><span>14</span></td>
+                        <td><span>15</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>16</span></td>
+                        <td><span>17</span></td>
+                        <td><span>18</span></td>
+                        <td><span>19</span></td>
+                        <td><span>20</span></td>
+                        <td><span>21</span></td>
+                        <td><span>22</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>23</span></td>
+                        <td><span>24</span></td>
+                        <td><span>25</span></td>
+                        <td><span>26</span></td>
+                        <td><span>27</span></td>
+                        <td><span>28</span></td>
+                        <td><span>29</span></td>
+                    </tr>
+                    <tr>
+                        <td><span>30</span></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <!-- Contenedor del contador -->
+        <section class="countdown">
+            <h2>Faltan</h2>
+            <div class="timer">
+                <div class="time-box">
+                    <div id="dias">00</div>
+                    <span>Días</span>
+                </div>
+                <div class="time-box">
+                    <div id="horas">00</div>
+                    <span>Horas</span>
+                </div>
+                <div class="time-box">
+                    <div id="minutos">00</div>
+                    <span>Minutos</span>
+                </div>
+                <div class="time-box">
+                    <div id="segundos">00</div>
+                    <span>Segundos</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ubicación -->
+        <section class="ubicacion">
+            <h2>Ubicación</h2>
+
+            <div class="evento">
+                <h3>Misa</h3>
+                <p><strong>Hora:</strong> 3:00 PM</p>
+                <p><strong>Lugar:</strong> Parroquia Santa María de Guadalupe</p>
+                <a href="https://maps.app.goo.gl/KkK3SKc4q5gkf1K36?g_st=aw" target="_blank" class="btn-maps">&#x2726; Ver en Maps</a>
+            </div>
+
+            <div class="evento">
+                <h3>Recepción</h3>
+                <p><strong>Salón:</strong> Eventos La Cruz</p>
+                <p><strong>Hora:</strong> 4:00 PM </p>
+                <a href="https://maps.app.goo.gl/j8N3kkkeqYhwJj7y5?g_st=aw" target="_blank" class="btn-maps">&#x2726; Ver en Maps</a>
+            </div>
+        </section>
+
+
+        <!-- padrinos y papas -->
+        <section class="padrinos-container">
+            <h2>Mis Padrinos y Papás</h2>
+
+            <div class="grupo">
+                <h3>Mis Padrinos</h3>
+                <p>ISRAEL ARMANDO ALAMILLA CRUZ</p>
+                <p>IMARLEN PÉREZ JIMÉNEZ</p>
+            </div>
+
+            <div class="grupo">
+                <h3>Mis Papás</h3>
+                <p>NICOLÁS PÉREZ JIMÉNEZ</p>
+                <p>ANGÉLICA NAVA MENDOZA</p>
+            </div>
+        </section>
+
+
+        <!-- Confirmación -->
+        <section class="confirmacion-container">
+            <h2>Confirmación de Asistencia</h2>
+            <p>¡Espero que seas parte de esta gran celebración!</p>
+            <a href="https://wa.me/527721291513?text=Hola%2C%20quiero%20confirmar%20mi%20asistencia" target="_blank">Confirmar</a>
+        </section>
+
+
+
+    </div>
+
+    <script>
+        // Abrir invitación
+        document.getElementById('portada').addEventListener('click', () => {
+            document.getElementById('portada').style.display = 'none';
+            document.getElementById('contenido').classList.add('mostrar');
+
+            const secciones = document.querySelectorAll('section');
+            secciones.forEach((sec, i) => {
+                setTimeout(() => {
+                    sec.classList.add('mostrar');
+                }, i * 300);
+            });
+
+            // Iniciar música automáticamente al abrir invitación
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playPauseBtn.textContent = "⏸";
+                }).catch(() => {});
+            }
+        });
+
+        // Reproductor
+        const audio = document.getElementById("audio");
+        const playPauseBtn = document.getElementById("playPause");
+        const rewindBtn = document.getElementById("rewind");
+        const forwardBtn = document.getElementById("forward");
+        const progress = document.getElementById("progress");
+        const progressContainer = document.getElementById("progressContainer");
+        const timeDisplay = document.getElementById("timeDisplay");
+
+        function formatTime(sec) {
+            const m = Math.floor(sec / 60);
+            const s = Math.floor(sec % 60).toString().padStart(2, "0");
+            return `${m}:${s}`;
+        }
+
+        playPauseBtn.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playPauseBtn.innerHTML = "&#x23F8;"; // ⏸
+                }).catch(err => console.log("Error de reproducción:", err));
+
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = "▶";
+            }
+        });
+
+        rewindBtn.addEventListener("click", () => {
+            audio.currentTime = Math.max(audio.currentTime - 10, 0);
+        });
+
+        forwardBtn.addEventListener("click", () => {
+            audio.currentTime = Math.min(audio.currentTime + 10, audio.duration);
+        });
+
+        audio.addEventListener("timeupdate", () => {
+            if (audio.duration) {
+                progress.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+                timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+            }
+        });
+
+        audio.addEventListener("ended", () => {
+            playPauseBtn.textContent = "▶";
+        });
+
+        progressContainer.addEventListener("click", (e) => {
+            const rect = progressContainer.getBoundingClientRect();
+            const clickTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+            audio.currentTime = clickTime;
+        });
+
+
+        //conteo
+        // Fecha objetivo
+        const targetDate = new Date("November 8, 2025 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const dias = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("dias").innerText = dias.toString().padStart(2, '0');
+            document.getElementById("horas").innerText = horas.toString().padStart(2, '0');
+            document.getElementById("minutos").innerText = minutos.toString().padStart(2, '0');
+            document.getElementById("segundos").innerText = segundos.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(interval);
+                document.querySelector(".timer").innerHTML = "<div>¡Llegó el gran día!</div>";
+            }
+        }
+
+        // Actualizar cada segundo
+        updateCountdown();
+        const interval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+
+</html>
